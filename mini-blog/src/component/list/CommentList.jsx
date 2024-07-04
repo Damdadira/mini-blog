@@ -1,5 +1,5 @@
 import React from "react";
-import Styled from "styled-components";
+import styled from "styled-components";
 import CommentListItem from "./CommentListItem";
 
 const Wrapper = styled.div`
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     align-items: flex-start;
     justify-content: center;
 
-    & > * {
+    & {
         :not(:last-child) {
             margin-bottom: 16px;
         }

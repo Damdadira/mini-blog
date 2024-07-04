@@ -5,11 +5,10 @@ import CommentList from "../list/CommentList";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import data from "../../data.json";
-import { getPathContributingMatches } from "@remix-run/router/dist/utils";
 
 const Wrapper = styled.div`
     padding: 16px;
-    width: calc(100%-32px);
+    width: calc(100% - 32px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,10 +19,8 @@ const Container = styled.div`
     width: 100%;
     max-width: 720px;
 
-    & > * {
-        :not(:last-child) {
-            margin-bottom: 16px;
-        }
+    :not(:last-child) {
+        margin-bottom: 16px;
     }
 `;
 
@@ -54,7 +51,7 @@ function PostViewPage(props) {
     const { postId } = useParams();
 
     const post = data.find((item) => {
-        return item.id === postId;
+        return item.id == postId;
     });
 
     const [comment, setComment] = useState("");
@@ -67,28 +64,28 @@ function PostViewPage(props) {
                     onClick={() => {
                         navigate("/");
                     }}
-                ></Button>
+                />
                 <PostContainer>
                     <TitleText>{post.title}</TitleText>
                     <ContentText>{post.content}</ContentText>
                 </PostContainer>
 
                 <CommentLabel>댓글</CommentLabel>
-                <CommentList comments={post.comments}></CommentList>
+                <CommentList comments={post.comments} />
 
                 <TextInput
-                    hegiht={40}
+                    height={40}
                     value={comment}
                     onChange={(event) => {
                         setComment(event.target.value);
                     }}
-                ></TextInput>
+                />
                 <Button
                     title="댓글 작성하기"
                     onClick={() => {
                         navigate("/");
                     }}
-                ></Button>
+                />
             </Container>
         </Wrapper>
     );
